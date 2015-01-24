@@ -97,6 +97,12 @@ include frameworks/native/build/phone-hdpi-512-dalvik-heap.mk
 # We have enough storage space to hold precise GC data
 PRODUCT_TAGS += dalvik.gc.type-precise
 
+# Force ART combilation even for eng target variant builds.
+# (instead of slow interpret-only mode which is default for eng in Lollipop)
+PRODUCT_PROPERTY_OVERRIDES += \
+    dalvik.vm.image-dex2oat-filter="" \
+    dalvik.vm.dex2oat-filter=speed
+
 #
 # Camera (video recording)
 #
